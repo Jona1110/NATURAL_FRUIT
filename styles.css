@@ -1,0 +1,503 @@
+/* Paleta de colores basada en el logo */
+:root {
+    --color-crema: #fdfaf6;
+    --color-verde: #004d3d;
+    --color-rosa: #f47796;
+    --color-dorado: #c5a065;
+    --color-blanco: #ffffff;
+    --sombra: 0 10px 20px rgba(0, 77, 61, 0.1);
+}
+
+/* Reseteo básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-crema);
+    color: var(--color-verde);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Pantalla de carga */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-crema);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--color-rosa);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--color-blanco);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* --- ESTILOS DEL MENÚ HAMBURGUESA Y SIDEBAR --- */
+.menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--color-verde);
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s ease;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+    color: var(--color-rosa);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 350px;
+    max-width: 100vw;
+    height: 100vh;
+    background-color: var(--color-blanco);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--color-verde);
+    color: var(--color-crema);
+}
+
+.sidebar-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--color-crema);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.menu-section {
+    margin-bottom: 2rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 1.5rem;
+}
+
+.menu-section:last-child {
+    border-bottom: none;
+}
+
+.menu-section h4 {
+    color: var(--color-rosa);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-section h5 {
+    color: var(--color-dorado);
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.menu-item span:last-child {
+    font-weight: 600;
+    color: var(--color-verde);
+}
+
+.horarios-section {
+    background-color: var(--color-crema);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    border-bottom: none;
+}
+
+.horarios-section h4 {
+    color: var(--color-verde);
+    margin-bottom: 0.5rem;
+}
+
+.toppings-list {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #555;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* MODIFICACIÓN DEL LOGO */
+.logo-container {
+    max-width: 280px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+    border-radius: 35px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-verde);
+}
+
+.highlight-pink { color: var(--color-rosa); }
+.highlight-gold { color: var(--color-dorado); }
+
+/* Secciones Principales */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-verde);
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background-color: var(--color-rosa);
+    border-radius: 5px;
+}
+
+/* --- NUEVO: ESTILOS DE PROMOCIONES --- */
+.promociones-contenedor {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.promo-card {
+    background: var(--color-blanco);
+    border-radius: 20px;
+    padding: 2.5rem 2rem 2rem 2rem;
+    flex: 1;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+    border-top: 6px solid var(--color-rosa);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-card:nth-child(2) {
+    border-top-color: var(--color-dorado);
+}
+
+.promo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 77, 61, 0.15);
+}
+
+.promo-badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-blanco);
+    padding: 8px 25px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.promo-badge.rosa {
+    background: var(--color-rosa);
+    box-shadow: 0 5px 15px rgba(244, 119, 150, 0.4);
+}
+
+.promo-badge.dorado {
+    background: var(--color-dorado);
+    box-shadow: 0 5px 15px rgba(197, 160, 101, 0.4);
+}
+
+.promo-card h3 {
+    color: var(--color-verde);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.promo-card h3 strong {
+    color: var(--color-rosa);
+    font-size: 1.8rem;
+}
+
+.promo-card:nth-child(2) h3 strong {
+    color: var(--color-dorado);
+}
+
+.promo-highlight {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-verde);
+    margin-bottom: 1rem;
+    background: rgba(0, 77, 61, 0.05);
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px dashed var(--color-rosa);
+}
+
+.promo-pasos {
+    text-align: left;
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.promo-pasos li {
+    margin-bottom: 0.8rem;
+}
+
+.promo-pasos strong {
+    color: var(--color-rosa);
+}
+
+.promo-premios {
+    display: flex;
+    justify-content: space-around;
+    background: var(--color-crema);
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--color-verde);
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.promo-premios span {
+    background: var(--color-blanco);
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--color-dorado);
+    font-size: 0.95rem;
+}
+
+.vigencia {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+    background: var(--color-verde);
+    padding: 8px 20px;
+    border-radius: 20px;
+}
+
+/* Estilos de la Galería Dinámica */
+.galeria-contenedor {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    height: 400px; 
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    background-color: #e9ecef; 
+    border: 3px solid var(--color-blanco);
+}
+
+.galeria-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; 
+    z-index: 1;
+}
+
+.galeria-img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Mapa */
+.mapa-contenedor {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    border: 3px solid var(--color-blanco);
+    transition: transform 0.3s ease;
+}
+
+.mapa-contenedor:hover {
+    transform: translateY(-5px);
+}
+
+/* Redes Sociales */
+.seccion-redes p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.botones-contenedor {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-blanco);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra);
+}
+
+.btn-facebook { background-color: #1877F2; }
+.btn-facebook:hover { background-color: #145dbf; transform: scale(1.05); }
+
+.btn-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+.btn-instagram:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(220, 39, 67, 0.3); }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--color-verde);
+    color: var(--color-crema);
+    margin-top: 2rem;
+}
+
+/* Animaciones de Entrada */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    main { padding: 1rem; }
+    .promociones-contenedor { flex-direction: column; align-items: center; } /* Apila las promos en celular */
+    .promo-card { width: 100%; max-width: 100%; }
+    .galeria-contenedor { height: 300px; } 
+    .mapa-contenedor { height: 350px; }
+    h1 { font-size: 1.2rem; }
+    h2 { font-size: 1.5rem; }
+    .botones-contenedor { flex-direction: column; }
+    .btn { justify-content: center; width: 100%; }
+    .logo-container { max-width: 180px; }
+}
